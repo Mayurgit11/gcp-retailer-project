@@ -19,7 +19,11 @@ GROUP BY 1, 2, 3, 4, 5;
 
 -----------------------------------------------------------------------------------------------------------
 -- 2. Customer Engagement Metrics (customer_engagement)
+<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS `nth-theater-450808-e2.gold_dataset.customer_engagement`
+=======
+CREATE TABLE IF NOT EXISTS `anth-theater-450808-e2.gold_dataset.customer_engagement`
+>>>>>>> 6e4fdfea0d6ea9568a1acdab9cc208b6c8fb7d1e
 AS
 SELECT 
     c.customer_id,

@@ -295,7 +295,11 @@ CREATE TABLE IF NOT EXISTS `nth-theater-450808-e2.silver_dataset.customer_review
 );
 
 --Step 2: Update Existing Active Records if There Are Changes
+<<<<<<< HEAD
 MERGE INTO `nth-theater-450808-e2.silver_dataset.customer_reviews` target
+=======
+MERGE INTO `anth-theater-450808-e2.silver_dataset.customer_reviews` target
+>>>>>>> 6e4fdfea0d6ea9568a1acdab9cc208b6c8fb7d1e
 USING 
   (SELECT 
     *, 
