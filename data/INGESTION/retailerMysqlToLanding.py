@@ -8,20 +8,20 @@ import json
 spark = SparkSession.builder.appName("RetailerMySQLToLanding").getOrCreate()
 
 # Google Cloud Storage (GCS) Configuration
-GCS_BUCKET = "datalake-project-bkt-19032025"
-LANDING_PATH = f"gs://{GCS_BUCKET}/landing/retailer-db/"
-ARCHIVE_PATH = f"gs://{GCS_BUCKET}/landing/retailer-db/archive/"
+GCS_BUCKET = "gcpproject_bucket"
+LANDING_PATH = f"gs://{GCS_BUCKET}/landing/retailer_db/"
+ARCHIVE_PATH = f"gs://{GCS_BUCKET}/landing/retailer_db/archive/"
 CONFIG_FILE_PATH = f"gs://{GCS_BUCKET}/configs/retailer_config.csv"
 
 # BigQuery Configuration
-BQ_PROJECT = "avd-databricks-demo"
+BQ_PROJECT = "nth-theater-450808-e2-demo"
 BQ_AUDIT_TABLE = f"{BQ_PROJECT}.temp_dataset.audit_log"
 BQ_LOG_TABLE = f"{BQ_PROJECT}.temp_dataset.pipeline_logs"
 BQ_TEMP_PATH = f"{GCS_BUCKET}/temp/"  
 
 # MySQL Configuration
 MYSQL_CONFIG = {
-    "url": "jdbc:mysql://34.55.68.64:3306/retailerDB?useSSL=false&allowPublicKeyRetrieval=true",
+    "url": "jdbc:mysql://35.223.67.218:3306/retailer_DB?useSSL=false&allowPublicKeyRetrieval=true",
     "driver": "com.mysql.cj.jdbc.Driver",
     "user": "myuser",
     "password": "mypass"
@@ -93,7 +93,7 @@ def get_latest_watermark(table_name):
 
 # Function to Move Existing Files to Archive
 def move_existing_files_to_archive(table):
-    blobs = list(storage_client.bucket(GCS_BUCKET).list_blobs(prefix=f"landing/retailer-db/{table}/"))
+    blobs = list(storage_client.bucket(GCS_BUCKET).list_blobs(prefix=f"landing/retailer_db/{table}/"))
     existing_files = [blob.name for blob in blobs if blob.name.endswith(".json")]
 
     if not existing_files:
@@ -108,7 +108,7 @@ def move_existing_files_to_archive(table):
         year, month, day = date_part[-4:], date_part[2:4], date_part[:2]
 
         # Move to Archive
-        archive_path = f"landing/retailer-db/archive/{table}/{year}/{month}/{day}/{file.split('/')[-1]}"
+        archive_path = f"landing/retailer_db/archive/{table}/{year}/{month}/{day}/{file.split('/')[-1]}"
         destination_blob = storage_client.bucket(GCS_BUCKET).blob(archive_path)
 
         # Copy file to archive and delete original
@@ -146,7 +146,7 @@ def extract_and_save_to_landing(table, load_type, watermark_col):
 
         # Generate File Path in GCS
         today = datetime.datetime.today().strftime('%d%m%Y')
-        JSON_FILE_PATH = f"landing/retailer-db/{table}/{table}_{today}.json"
+        JSON_FILE_PATH = f"landing/retailer_db/{table}/{table}_{today}.json"
 
         # Upload JSON to GCS
         bucket = storage_client.bucket(GCS_BUCKET)
