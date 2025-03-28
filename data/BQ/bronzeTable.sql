@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 CREATE EXTERNAL TABLE IF NOT EXISTS `nth-theater-450808-e2-demo.bronze_dataset.orders`(
 =======
-CREATE EXTERNAL TABLE IF NOT EXISTS `anth-theater-450808-e2.bronze_dataset.orders`(
+CREATE EXTERNAL TABLE IF NOT EXISTS `nth-theater-450808-e2.bronze_dataset.orders`(
 >>>>>>> 6e4fdfea0d6ea9568a1acdab9cc208b6c8fb7d1e
     order_id INT64,
     customer_id INT64,

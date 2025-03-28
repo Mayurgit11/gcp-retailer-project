@@ -80,8 +80,9 @@ LEFT JOIN `nth-theater-450808-e2.silver_dataset.order_items` oi ON ps.product_id
 WHERE s.is_quarantined = FALSE
 GROUP BY 1, 2;
 
+
 -----------------------------------------------------------------------------------------------------------
---5. Customer Reviews Summary (customer_reviews_summary)
+--5. Customer Reviews Summary (customer_reviews_summary)mayu
 CREATE TABLE IF NOT EXISTS `nth-theater-450808-e2.gold_dataset.customer_reviews_summary`
 AS
 SELECT 
