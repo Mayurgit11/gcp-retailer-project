@@ -120,6 +120,8 @@ OPTIONS (
   uris = ['gs://gcpproject_bucket/landing/supplier-db/product_suppliers/*.json']
 );
 
+
+
 -------------------------------------------------------------------------------------------------------------
 
 <<<<<<< HEAD
