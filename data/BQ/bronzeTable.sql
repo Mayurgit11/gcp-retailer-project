@@ -47,6 +47,8 @@ OPTIONS (
     uris = ['gs://gcpproject_bucket/landing/retailer_db/products/*.json']
 );
 
+
+
 <<<<<<< HEAD
 CREATE EXTERNAL TABLE IF NOT EXISTS `nth-theater-450808-e2-demo.bronze_dataset.categories`
 =======
